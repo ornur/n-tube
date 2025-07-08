@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { ClerkProvider } from '@clerk/nextjs'
 import { Inter } from "next/font/google";
+import { ClerkProvider } from '@clerk/nextjs'
+import { TRPCProvider } from "@/trpc/client";
 import "./globals.css";
 
 const inter = Inter({
@@ -23,7 +24,9 @@ export default function RootLayout({
         <body
           className={`${inter.className} antialiased`}
         >
-          {children}
+          <TRPCProvider>
+            {children}
+          </TRPCProvider>
         </body>
       </html>
     </ClerkProvider>
